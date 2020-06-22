@@ -25,20 +25,12 @@ The package should probably not be used for very large hierarchies, but for smal
 002.001.001.001.001.001.001: Pea
 ```
 
-## Installation:
-
-```npm i hierarkey```
-
-
 ## Usage 
 
 Now create a new hierarKey instance and generate some keys. In this example the numbering on each level starts with 1 and each keys have 3 digits. This program will produce the output shown here above:
 
 ```
-// This following quirky and extended import syntax for javascript is currently required by node
-import hierarchy from "hierarchy"; 
-const  { HierarKey }  = hierarchy;  
-
+import { HierarKey } from "../mod.ts"
 let hk = new HierarKey(1,3)  
 let map = new Map()
 
@@ -68,19 +60,19 @@ map.forEach( ( value, key ) => {
 })
 ```
 
-Running the example: 
+Running the example from the project directory: 
 
-`node  --experimental-modules example_A.mjs`
+`deno --run examples/example_A.ts`
 
 ## The HierarKey API
 
 While you have to keep track of how you want to assign keys to each of your entries, the HierarKey instance remembers the current assigned numbering for each of the leafs in the hierarchy, enabling it to automatically provide the next available number when you call one of the API functions, as illustrated by this code example:
 
+`deno --run examples/example_C.ts`
+
 ```
 //  file: examples/example_C.mjs 
-import hierarchy from "../lib/HierarKey.js";
-const  { HierarKey }  = hierarchy;
-
+import { HierarKey } from "../mod.ts"
 let hk = new HierarKey(1,4)
 
 console.log('Get the root leaf:')
@@ -129,6 +121,36 @@ Jump to a level in between:
 0002.0001
 0002.0002
 ```
-For more API information please look at the *typedoc* genrated documentation in the *docs* directory of the package.
+## Fetch and number a hierarchy of Music Genres from Wikipedia
+
+`deno run --allow-net examples/example_B.ts`
+
+will give you the output:
+
+```
+01: Electronic
+01.01: Ambient music|Ambient
+01.01.01: Ambient dub
+01.01.02: Dark ambient
+01.01.03: Drone music|Drone
+01.01.04: Space music|Space
+01.01.05: Illbient
+01.01.06: Psybient
+01.02: Breakbeat
+01.02.01: Acid breaks
+01.02.02: Baltimore club
+01.02.02.01: Jersey club
+01.02.03: Big beat
+01.02.04: Broken beat
+01.02.05: Florida breaks
+01.02.05.01: Nu-funk
+01.02.05.02: Miami bass
+01.02.06: Nu skool breaks
+01.03: Disco
+01.03.01: Afro/cosmic music|Afro/Cosmic
+01.03.02: Disco polo
+(...)
+```
+Have a look at the example code in the `examples` directory and for more API information (for now) please check the test file: `mod_test.ts`
 
 

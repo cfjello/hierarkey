@@ -1,0 +1,25 @@
+import { HierarKey } from "../mod.ts";
+let hk = new HierarKey(1,4)
+
+console.log('Get the root leaf:')
+console.log(hk.nextLeaf())
+console.log('Go up a few levels:')
+console.log(hk.nextLevel())
+console.log(hk.nextLevel())
+console.log(hk.nextLeaf())
+console.log(hk.nextLevel())
+console.log('Go down a few levels:')
+console.log(hk.prevLevel())
+console.log(hk.prevLevel())
+console.log('Jump to an existing level:')
+console.log(hk.jumpToLevel('0001.0001.0002'))
+console.log('Jump to an arbitrary level:')
+console.log(hk.jumpToLevel('7.6.5'))
+console.log(hk.nextLeaf())
+console.log('Go a down 2 levels:')
+console.log(hk.prevLevel(2))
+console.log('Jump to a level in between:')
+console.log(hk.jumpToLevel('2.1'))
+console.log(hk.nextLeaf())
+
+
