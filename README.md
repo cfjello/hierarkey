@@ -1,4 +1,4 @@
-# HierarKey
+# HierarKey - A Deno Module
 
 A package to produces a sortable numbering for nodes in a hierarchy. The keys have the format:
 
